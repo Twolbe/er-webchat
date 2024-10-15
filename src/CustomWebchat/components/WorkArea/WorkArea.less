@@ -1,0 +1,21 @@
+.work-area::-webkit-scrollbar {
+  display: none;
+}
+
+.work-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  flex-grow: 1;
+  min-height: 0;
+  height: unset !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow: scroll;
+}
+
+.work-area--min {
+  &:extend(.work-area);
+  background: center / cover url('../../../assets/bg.jpg');
+}

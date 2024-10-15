@@ -1,0 +1,1 @@
+{"version":3,"file":"UserMessage.d.ts","sourceRoot":"","sources":["../../../../../../src/CustomWebchat/components/Messages/UserMessage/UserMessage.tsx"],"names":[],"mappings":"AAEA,QAAA,MAAM,WAAW,4BAId;IACD,KAAK,EAAE,OAAO,CAAA;IACd,KAAK,EAAE,MAAM,GAAG,MAAM,CAAA;IACtB,IAAI,EAAE,MAAM,CAAA;CACb,4CAUA,CAAA;AAED,eAAe,WAAW,CAAA"}

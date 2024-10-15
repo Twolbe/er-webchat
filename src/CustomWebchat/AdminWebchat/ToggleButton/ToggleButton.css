@@ -1,0 +1,26 @@
+.toggle-button__container {
+  animation: append-animate 0.3s linear;
+}
+
+.toggle-button__button {
+  height: 3rem !important;
+  width: 3rem !important;
+}
+
+@keyframes append-animate {
+  0% {
+    transform: rotate(-270deg);
+    opacity: 0;
+    scale: 1;
+  }
+  80% {
+    transform: rotate(0);
+    opacity: 1;
+    scale: 1.2;
+  }
+  100% {
+    transform: rotate(0);
+    opacity: 1;
+    scale: 1;
+  }
+}

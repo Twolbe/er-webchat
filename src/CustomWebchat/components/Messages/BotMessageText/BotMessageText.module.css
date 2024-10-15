@@ -1,0 +1,27 @@
+.bot-message {
+  display: flex;
+  flex-direction: row;
+  max-width: 90%;
+  word-wrap: break-word;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  padding: 0.5rem;
+  width: fit-content;
+  align-self: flex-start;
+  background-color: white;
+  color: inherit;
+  border-radius: 0rem 1rem 1rem 1rem;
+}
+
+.bot-message p {
+  margin-bottom: 0.2rem;
+}
+
+.bot-message::selection {
+  color: white;
+  background: #15c3d3;
+}
+
+.html-text {
+  overflow-y: scroll;
+  white-space: pre-wrap;
+}

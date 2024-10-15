@@ -1,0 +1,1 @@
+{"version":3,"file":"BotMessageText.d.ts","sourceRoot":"","sources":["../../../../../../src/CustomWebchat/components/Messages/BotMessageText/BotMessageText.tsx"],"names":[],"mappings":"AAEA,QAAA,MAAM,cAAc,4BAIjB;IACD,KAAK,EAAE,OAAO,CAAA;IACd,KAAK,EAAE,MAAM,GAAG,MAAM,CAAA;IACtB,IAAI,EAAE,MAAM,CAAA;CACb,4CAeA,CAAA;AAED,eAAe,cAAc,CAAA"}

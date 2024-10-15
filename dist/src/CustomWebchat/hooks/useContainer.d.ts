@@ -1,0 +1,2 @@
+export declare const useContainer: (isMin: boolean) => ({ header, workArea, input }: import("../Containers/interface").ContainerProps) => import("react/jsx-runtime").JSX.Element;
+//# sourceMappingURL=useContainer.d.ts.map
