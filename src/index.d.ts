@@ -4,6 +4,7 @@ declare module "er-webcaht" {
     tennant: string;
     lang?: "ru" | "en";
     embed?: boolean;
+    title?: string;
   }>;
   export = ERWebChat;
 }
