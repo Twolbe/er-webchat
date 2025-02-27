@@ -1,13 +1,13 @@
+import WebChatI18N from "@/CustomWebchat/i18n";
+import { KeycloakContext } from "@/index";
 import CheckCircleFilled from "@ant-design/icons/CheckCircleOutlined";
 import ClearOutlined from "@ant-design/icons/ClearOutlined";
 import SyncOutlined from "@ant-design/icons/SyncOutlined";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
+import { useContext } from "react";
 import { ButtonTooltip } from "../../helpers";
 import "./Header.css";
-import { useContext } from "react";
-import { KeycloakContext } from "@/index";
-import WebChatI18N from "@/CustomWebchat/i18n";
 
 interface I_HeaderProps {
   clearHistory: () => void;
@@ -22,11 +22,11 @@ export const Header = ({
   connected,
   borderRadius = "0rem",
 }: I_HeaderProps) => {
-  const { lang } = useContext(KeycloakContext);
+  const { lang, title } = useContext(KeycloakContext);
   return (
     <div className="header-container" style={{ borderRadius }}>
       <div className="webchat-title_status">
-        <h3>{WebChatI18N[lang]["webChat/title"]}</h3>
+        <h3>{title}</h3>
         {connected ? (
           <Tooltip
             title={WebChatI18N[lang]["webChat/online"]}
