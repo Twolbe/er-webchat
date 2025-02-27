@@ -15,6 +15,7 @@ export declare const KeycloakContext: import("react").Context<{
     url: undefined | string;
     path: string;
     lang: "ru" | "en";
+    title: string;
 }>;
 /**
  * @param {*} getTokens - function; returns current access and refresh tokens. refresh token is optional
@@ -23,8 +24,9 @@ export declare const KeycloakContext: import("react").Context<{
  * @param {*} path - path to socket connection. Default '/webhooks/portal/webhook'
  * @param {*} [embed=true] -  webchat on page/over page. Default 'true' (on page)
  * @param {*} [lang='ru'] - language. Default 'ru'
+ * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default Easy Report Веб-чат
  */
-declare const ERWebChat: ({ getTokens, tennant, url, path, lang, embed, }: {
+declare const ERWebChat: ({ getTokens, tennant, url, path, lang, embed, title, }: {
     getTokens: () => {
         access: string;
         refresh?: string;
@@ -34,6 +36,7 @@ declare const ERWebChat: ({ getTokens, tennant, url, path, lang, embed, }: {
     path?: string;
     lang?: "ru" | "en";
     embed?: boolean;
+    title?: string;
 }) => import("react/jsx-runtime").JSX.Element;
 export default ERWebChat;
 //# sourceMappingURL=index.d.ts.map

@@ -40,7 +40,7 @@ export const KeycloakContext = createContext<{
  * @param {*} path - path to socket connection. Default '/webhooks/portal/webhook'
  * @param {*} [embed=true] -  webchat on page/over page. Default 'true' (on page)
  * @param {*} [lang='ru'] - language. Default 'ru'
- * @param {*} [title=WebChatI18N[lang]["webChat/title"]] - webchat title. Default WebChatI18N[lang]["webChat/title"]
+ * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default Easy Report Веб-чат
  */
 const ERWebChat = ({
   getTokens,
