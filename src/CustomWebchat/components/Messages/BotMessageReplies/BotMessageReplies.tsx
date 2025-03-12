@@ -19,7 +19,7 @@ export const BotMessageReplies = ({
 }: {
   isMin: boolean;
   myKey: string | number;
-  quickReplies: I_MessageQuickReply[];
+  quickReplies: I_MessageQuickReply[] | I_MessageQuickReply[][];
   text: string;
   sendSocketMessage: (value: string) => void;
   textAreaRef: any;
@@ -38,6 +38,37 @@ export const BotMessageReplies = ({
     setDrawerOpen(false);
     textAreaRef.current?.focus();
   };
+
+  const handleQuickReplyClick = (reply: I_MessageQuickReply) => {
+    if (reply.payload) {
+      sendSocketMessage(reply.payload);
+    } else {
+      setLink(reply.link!);
+      interactiveContainerType === "modal"
+        ? setModalOpen(true)
+        : setDrawerOpen(true);
+    }
+  };
+
+  const QuickReplyItem = ({
+    reply,
+    isLastLine,
+    onClick,
+  }: {
+    reply: I_MessageQuickReply;
+    isLastLine: boolean;
+    onClick: () => void;
+  }) => (
+    <div
+      className={`${s["bot-message"]} ${s.reply}`}
+      style={{
+        borderRadius: isLastLine ? ".5rem .5rem 1rem 1rem" : "0.5rem",
+      }}
+      onClick={onClick}
+    >
+      {reply.title}
+    </div>
+  );
 
   return (
     <div
@@ -59,36 +90,35 @@ export const BotMessageReplies = ({
           __html: text,
         }}
       />
-      {quickReplies?.map((reply, i) => (
-        <div
-          key={`${myKey}-${i}`}
-          className={`${s["bot-message"]} ${s["reply"]}`}
-          style={{
-            borderRadius:
-              quickReplies.length - 1 === i
-                ? ".5rem .5rem 1rem 1rem"
-                : ".5rem .5rem .5rem .5rem",
-          }}
-          onClick={() =>
-            reply.payload
-              ? sendSocketMessage(reply.payload)
-              : (() => {
-                  setLink(reply.link!);
-                  interactiveContainerType === "modal"
-                    ? setModalOpen(true)
-                    : setDrawerOpen(true);
-                })()
-          }
-        >
-          {reply.title}
-        </div>
-      ))}
+      {quickReplies?.map((replyLine, i) => {
+        const isLastLine = i === quickReplies.length - 1;
+
+        return Array.isArray(replyLine) ? (
+          <div className={s["reply-line"]} key={`${myKey}-${i}`}>
+            {replyLine.map((reply, j) => (
+              <QuickReplyItem
+                key={`${myKey}-${i}-${j}`}
+                reply={reply}
+                isLastLine={isLastLine}
+                onClick={() => handleQuickReplyClick(reply)}
+              />
+            ))}
+          </div>
+        ) : (
+          <QuickReplyItem
+            key={`${myKey}-${i}`}
+            reply={replyLine}
+            isLastLine={isLastLine}
+            onClick={() => handleQuickReplyClick(replyLine)}
+          />
+        );
+      })}
       <Modal
         footer={null}
         open={modalOpen}
         onCancel={() => {
           setModalOpen(false);
-          textAreaRef.current?.focus();
+          textAreaRef.current.focus();
         }}
         style={{
           minWidth: "50vw",

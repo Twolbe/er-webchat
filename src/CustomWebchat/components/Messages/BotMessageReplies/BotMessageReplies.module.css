@@ -27,6 +27,15 @@
   background: #15c3d3;
 }
 
+.reply-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .reply {
   background: rgba(110, 110, 110, 0.5);
   backdrop-filter: blur(5px);
@@ -34,7 +43,7 @@
   color: white;
   cursor: pointer;
   text-align: center;
-  max-width: 100%;
+  flex: calc(50% - 3px);
 }
 
 .reply:hover {
