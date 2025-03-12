@@ -23,6 +23,7 @@ export const useWebchat = (open?: boolean) => {
   const sendSocketMessage = useCallback(
     (value: string) => {
       if (tennant && getTokens) {
+        setLoading(true);
         const { access, refresh } = getTokens();
         emit("user_uttered", {
           message: value,
@@ -46,7 +47,6 @@ export const useWebchat = (open?: boolean) => {
     if (responses.at(-1)?.issuer === "user") {
       setMessages(responses);
     } else {
-      setLoading(true);
       setTimeout(() => {
         setMessages(responses);
         setLoading(false);
