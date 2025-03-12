@@ -1,5 +1,6 @@
-# Install 
+node  **^20.1.0**
 
+# Install 
 It is assumed that you have **react** and **reactDOM** versions **^17.0.0** or **^18.0.0** installed.
 
 To install the package, run the following command:
