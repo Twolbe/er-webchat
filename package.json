@@ -1,13 +1,13 @@
 {
   "name": "er-webchat",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
     "dist/**/*"
   ],
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve --port 3000 --open",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development"
   },

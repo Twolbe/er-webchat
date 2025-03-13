@@ -1,11 +1,12 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { KeycloakContext } from "..";
 import { getRepsonsesFromStore, setReponsesToStore } from "./helpers";
 import { useWs } from "./hooks/useWs";
 import { I_WebChatMessage } from "./interface";
-import { KeycloakContext } from "..";
 
 export const useWebchat = (open?: boolean) => {
-  const { tennant, getTokens, lang, url, path } = useContext(KeycloakContext);
+  const { tennant, legacyTennant, getTokens, lang, url, path } =
+    useContext(KeycloakContext);
 
   const [ready, session_id, responses, setResponses, emit] = useWs(url, path);
   const [messages, setMessages] = useState<
@@ -31,7 +32,9 @@ export const useWebchat = (open?: boolean) => {
             language: lang,
             access_token: access,
             refresh_token: refresh || "refresh",
-            tennant: { "tennant/name": tennant, "tennant/slug": tennant },
+            tennant: legacyTennant
+              ? { "tennant/name": tennant, "tennant/slug": tennant }
+              : { name: tennant, slug: tennant },
           },
           session_id,
         });
