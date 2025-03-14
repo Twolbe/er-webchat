@@ -29,7 +29,7 @@ If you set the **embed** property to _false_, the web chat will be invoked by a 
 | **embed**         | `boolean`                                    | `true`                     | ❌       | webchat on page or over page                                                                               |
 | **lang**          | `string`                                     | `ru`                       | ❌       | language                                                                                                   |
 | **title**         | `string`                                     | `Easy Report Веб-чат`      | ❌       | webchat title                                                                                              |
-| **extraAction**   | `any`                                        | -                          | ❌       | extra action for header                                                                                    |
+| **extraAction**   | `ReactNode`, `ReactNode[]`                   | -                          | ❌       | extra action for header                                                                                    |
 
 # Usage examples
 
@@ -63,27 +63,26 @@ You can set existed function, that returns actual tokens to **getTokens** attrib
 ```js
 const getMyTokens = () => {
   // Some custom logic
-  const access = ...
-  const refresh = ...
 
-  return { access, refresh }
-}
+  return { access, refresh };
+};
 
 const MyPage = () => {
   return (
     <div>
       // Some custom nodes
-        <div className='webchat-container'> // set size to container, and webchat will take up all the space
-          <ERWebChat
-            getTokens={getMyTokens}
-            tennant='mycompany'
-            url='wss://mycompany.easyreportbot.com'
-          />
-        </div>
+      <div className="webchat-container">
+        // ↑ set size to container, and webchat will take up all the space
+        <ERWebChat
+          getTokens={getMyTokens}
+          tennant="mycompany"
+          url="wss://mycompany.easyreportbot.com"
+        />
+      </div>
       // Some custom nodes
     </div>
-  )
-}
+  );
+};
 ```
 
 ## Non-embedded ERWebChat:
