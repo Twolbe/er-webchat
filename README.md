@@ -17,7 +17,7 @@ import ERWebChat from "er-webchat";
 By default, the web chat takes up the entire space of its container.
 If you set the **embed** property to _false_, the web chat will be invoked by a button located at the bottom right of the page.
 
-# Props Reference
+# Props reference
 
 | Prop Name         | Type                                         | Default                    | Required | Description                                                                                                |
 | ----------------- | -------------------------------------------- | -------------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
@@ -43,8 +43,7 @@ const MyPage = () => {
     <div>
       // Some custom nodes
       <div className="webchat-container">
-        {" "}
-        // set size to container, and webchat will take up all the space
+        // ↑ set size to container, and webchat will take up all the space
         <ERWebChat
           getTokens={() => ({ access: MyAuthService.getToken() })}
           tennant="mycompany"
