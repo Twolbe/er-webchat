@@ -1,72 +1,91 @@
-import ConfigProvider from "antd/es/config-provider";
-import enUS from "antd/es/locale/en_US";
-import ruRU from "antd/es/locale/ru_RU";
-import { createContext } from "react";
-import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
-import NoAdminWebchat from "./CustomWebchat/NoAdminWebchat/NoAdminWebchat";
-import "./index.less";
-// import { createRoot } from "react-dom/client";
 import "antd/es/button/style/css";
+import ConfigProvider from "antd/es/config-provider";
 import "antd/es/drawer/style/css";
 import "antd/es/image/style/css";
 import "antd/es/input/style/css";
+import enUS from "antd/es/locale/en_US";
+import ruRU from "antd/es/locale/ru_RU";
 import "antd/es/modal/style/css";
 import "antd/es/spin/style/css";
 import "antd/es/tooltip/style/css";
+import { createContext } from "react";
+// import { createRoot } from "react-dom/client";
+import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
 import WebChatI18N from "./CustomWebchat/i18n";
+import NoAdminWebchat from "./CustomWebchat/NoAdminWebchat/NoAdminWebchat";
+import "./index.less";
 
 // const root = createRoot(document.getElementById("root")!);
 
 export const KeycloakContext = createContext<{
   tennant: undefined | string;
+  legacyTennant: undefined | boolean;
   getTokens: undefined | (() => { access: string; refresh?: string });
   url: undefined | string;
   path: string;
   lang: "ru" | "en";
   title: string;
+  extraAction: undefined | any;
 }>({
   tennant: undefined,
+  legacyTennant: false,
   getTokens: undefined,
   url: undefined,
   path: "/webhooks/portal/webhook",
   lang: "ru",
   title: WebChatI18N.ru["webChat/title"],
+  extraAction: undefined,
 });
 
 /**
  * @param {*} getTokens - function; returns current access and refresh tokens. refresh token is optional
  * @param {*} tennant - client realm in keycloak
- * @param {*} url - url to reach er core: [protocol]://easyreport.mycompany.com. Protocol values (wss | https | ws | http)
+ * @param {*} [legacyTennant=false] - if 'true', uses legacy tennant structure in ER<25.3.5. Default 'false'
+ * @param {*} url - URL to reach er core: [protocol]://easyreport.mycompany.com. Protocol values (wss | https | ws | http)
  * @param {*} path - path to socket connection. Default '/webhooks/portal/webhook'
  * @param {*} [embed=true] -  webchat on page/over page. Default 'true' (on page)
  * @param {*} [lang='ru'] - language. Default 'ru'
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default Easy Report Веб-чат
+ * @param {*} extraAction - extra action for header
  */
 const ERWebChat = ({
   getTokens,
   tennant,
+  legacyTennant = false,
   url,
   path = "/webhooks/portal/webhook",
   lang = "ru",
   embed = true,
   title = WebChatI18N[lang]["webChat/title"],
+  extraAction,
 }: {
   getTokens: () => { access: string; refresh?: string };
   tennant: string;
+  legacyTennant?: boolean;
   url: string;
   path?: string;
   lang?: "ru" | "en";
   embed?: boolean;
   title?: string;
+  extraAction?: any;
 }) => {
   return (
     <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
       <KeycloakContext.Provider
-        value={{ getTokens, tennant, url, lang, path, title }}
+        value={{
+          getTokens,
+          tennant,
+          legacyTennant,
+          url,
+          lang,
+          path,
+          title,
+          extraAction,
+        }}
       >
         {embed ? (
           <div style={{ height: "100%", display: "flex" }}>
-            <NoAdminWebchat />
+            <NoAdminWebchat extraAction={extraAction} />
           </div>
         ) : (
           <AdminWebchat />
@@ -80,6 +99,8 @@ export default ERWebChat;
 //   <ERWebChat
 //     tennant=""
 //     url=""
-//     getTokens={() => ({ access: "" })}
+//     getTokens={() => ({
+//       access: "",
+//     })}
 //   />
 // );

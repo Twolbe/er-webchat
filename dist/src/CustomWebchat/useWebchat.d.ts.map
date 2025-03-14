@@ -1,1 +1,1 @@
-{"version":3,"file":"useWebchat.d.ts","sourceRoot":"","sources":["../../../src/CustomWebchat/useWebchat.tsx"],"names":[],"mappings":"AAGA,OAAO,EAAE,gBAAgB,EAAE,MAAM,aAAa,CAAC;AAG/C,eAAO,MAAM,UAAU,UAAW,OAAO;;;mCAiB7B,MAAM;;;;;;;iBAZa,MAAM;;;;;CAgFpC,CAAC"}
+{"version":3,"file":"useWebchat.d.ts","sourceRoot":"","sources":["../../../src/CustomWebchat/useWebchat.tsx"],"names":[],"mappings":"AAIA,OAAO,EAAE,gBAAgB,EAAE,MAAM,aAAa,CAAC;AAE/C,eAAO,MAAM,UAAU,UAAW,OAAO;;;mCAkB7B,MAAM;;;;;;;iBAZa,MAAM;;;;;CAkFpC,CAAC"}
