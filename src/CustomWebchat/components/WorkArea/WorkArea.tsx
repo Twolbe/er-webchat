@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { KeycloakContext } from "@/index";
+import { useContext, useState } from "react";
 import { isAttachment, isTextWithReplies } from "../../helpers";
 import useAutoScroll from "../../hooks/useAutoScroll";
 import { BotMessageAttachment } from "../Messages/BotMessageAttachment/BotMessageAttachment";
@@ -23,11 +24,17 @@ export const WorkArea = ({
   textAreaRef: any;
   interactiveContainerType?: "modal" | "drawer";
 }) => {
+  const { background } = useContext(KeycloakContext);
+
   const [imageLoadingCounter, setImageLoadingCounter] = useState(0);
   const ref = useAutoScroll(loading, imageLoadingCounter, messages);
 
   return (
-    <div ref={ref} className={isMin ? "work-area--min" : "work-area"}>
+    <div
+      ref={ref}
+      className="work-area"
+      style={{ ...(isMin && { background }) }}
+    >
       {messages?.map((message, index) => {
         return message.issuer === "user" ? (
           <UserMessage

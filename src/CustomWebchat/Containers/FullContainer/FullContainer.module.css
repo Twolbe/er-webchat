@@ -12,11 +12,9 @@
   flex: 1 1 auto;
   min-height: 0;
   margin: 0 auto;
-  background-color: #ededed;
   justify-content: flex-end;
   padding: 0 20% 1.5rem 20%;
   width: 100%;
-  background: center / cover url('../../../assets/bg.jpg');
 }
 
 .input-wrapper {

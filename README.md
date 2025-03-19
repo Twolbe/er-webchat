@@ -23,13 +23,14 @@ If you set the **embed** property to _false_, the web chat will be invoked by a 
 | ----------------- | -------------------------------------------- | -------------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
 | **getTokens**     | `() => { access: string; refresh?: string }` | -                          | ✅       | function; returns current access and refresh tokens; refresh token is optional                             |
 | **tennant**       | `string`                                     | -                          | ✅       | client realm in keycloak                                                                                   |
-| **legacyTennant** | `boolean`                                    | `false`                    | ❌       | if `true`, uses legacy tennant structure in ER<25.3.5                                                      |
+| **legacyTennant** | `boolean`                                    | `false`                    | ❌       | if `true`, uses legacy (ER<25.3.5) tennant structure                                                      |
 | **url**           | `string`                                     | -                          | ✅       | URL to reach ER core: [protocol]://easyreport.mycompany.com; protocol values: `wss`, `https`, `ws`, `http` |
 | **path**          | `string`                                     | `/webhooks/portal/webhook` | ❌       | path to socket connection                                                                                  |
 | **embed**         | `boolean`                                    | `true`                     | ❌       | webchat on page or over page                                                                               |
 | **lang**          | `string`                                     | `ru`                       | ❌       | language                                                                                                   |
 | **title**         | `string`                                     | `Easy Report Веб-чат`      | ❌       | webchat title                                                                                              |
 | **extraAction**   | `ReactNode`, `ReactNode[]`                   | -                          | ❌       | extra action for header                                                                                    |
+| **background**    | `CSSProperties["background"]`                | `#d9d9d9`                  | ❌       | background CSS property                                                                                    |
 
 # Usage examples
 

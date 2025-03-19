@@ -8,7 +8,7 @@ import ruRU from "antd/es/locale/ru_RU";
 import "antd/es/modal/style/css";
 import "antd/es/spin/style/css";
 import "antd/es/tooltip/style/css";
-import { createContext } from "react";
+import { createContext, CSSProperties } from "react";
 // import { createRoot } from "react-dom/client";
 import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
 import WebChatI18N from "./CustomWebchat/i18n";
@@ -26,6 +26,7 @@ export const KeycloakContext = createContext<{
   lang: "ru" | "en";
   title: string;
   extraAction: undefined | any;
+  background: CSSProperties["background"];
 }>({
   tennant: undefined,
   legacyTennant: false,
@@ -35,18 +36,20 @@ export const KeycloakContext = createContext<{
   lang: "ru",
   title: WebChatI18N.ru["webChat/title"],
   extraAction: undefined,
+  background: "#d9d9d9",
 });
 
 /**
  * @param {*} getTokens - function; returns current access and refresh tokens. refresh token is optional
  * @param {*} tennant - client realm in keycloak
- * @param {*} [legacyTennant=false] - if 'true', uses legacy tennant structure in ER<25.3.5. Default 'false'
+ * @param {*} [legacyTennant=false] - if 'true', uses legacy (ER<25.3.5) tennant structure. Default 'false'
  * @param {*} url - URL to reach er core: [protocol]://easyreport.mycompany.com. Protocol values (wss | https | ws | http)
  * @param {*} path - path to socket connection. Default '/webhooks/portal/webhook'
  * @param {*} [embed=true] -  webchat on page/over page. Default 'true' (on page)
  * @param {*} [lang='ru'] - language. Default 'ru'
- * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default Easy Report Веб-чат
+ * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
+ * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
  */
 const ERWebChat = ({
   getTokens,
@@ -58,6 +61,7 @@ const ERWebChat = ({
   embed = true,
   title = WebChatI18N[lang]["webChat/title"],
   extraAction,
+  background = "#d9d9d9",
 }: {
   getTokens: () => { access: string; refresh?: string };
   tennant: string;
@@ -68,6 +72,7 @@ const ERWebChat = ({
   embed?: boolean;
   title?: string;
   extraAction?: any;
+  background?: CSSProperties["background"];
 }) => {
   return (
     <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
@@ -81,6 +86,7 @@ const ERWebChat = ({
           path,
           title,
           extraAction,
+          background,
         }}
       >
         {embed ? (
