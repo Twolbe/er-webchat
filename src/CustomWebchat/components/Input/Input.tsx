@@ -1,7 +1,7 @@
 import { useI18N } from "@/CustomWebchat/i18n";
 import SendOutlined from "@ant-design/icons/SendOutlined";
 import Button from "antd/es/button";
-import TextArea from "antd/lib/input/TextArea";
+import TextArea from "antd/es/input/TextArea";
 import { useCallback, useState } from "react";
 import { I_UserMessage, I_WebChatMessage } from "../../interface";
 
