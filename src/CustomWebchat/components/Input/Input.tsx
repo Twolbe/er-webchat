@@ -2,7 +2,7 @@ import WebChatI18N from "@/CustomWebchat/i18n";
 import { KeycloakContext } from "@/index";
 import SendOutlined from "@ant-design/icons/SendOutlined";
 import Button from "antd/es/button";
-import TextArea from "antd/lib/input/TextArea";
+import TextArea from "antd/es/input/TextArea";
 import { useCallback, useContext, useState } from "react";
 import { I_UserMessage, I_WebChatMessage } from "../../interface";
 

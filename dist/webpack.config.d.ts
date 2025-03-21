@@ -40,16 +40,16 @@ declare function _exports(_: any, { mode }: {
             };
             type?: undefined;
             include?: undefined;
-            exclude?: undefined;
             loader?: undefined;
+            exclude?: undefined;
         } | {
             test: RegExp;
             type: string;
             use?: undefined;
             issuer?: undefined;
             include?: undefined;
-            exclude?: undefined;
             loader?: undefined;
+            exclude?: undefined;
         } | {
             test: RegExp;
             use: (string | {
@@ -74,23 +74,8 @@ declare function _exports(_: any, { mode }: {
             include: RegExp;
             issuer?: undefined;
             type?: undefined;
+            loader?: undefined;
             exclude?: undefined;
-            loader?: undefined;
-        } | {
-            test: RegExp;
-            use: (string | {
-                loader: string;
-                options: {
-                    lessOptions: {
-                        javascriptEnabled: boolean;
-                    };
-                };
-            })[];
-            exclude: RegExp;
-            issuer?: undefined;
-            type?: undefined;
-            include?: undefined;
-            loader?: undefined;
         } | {
             test: RegExp;
             loader: string;
@@ -99,6 +84,60 @@ declare function _exports(_: any, { mode }: {
             issuer?: undefined;
             type?: undefined;
             include?: undefined;
+        } | {
+            test: RegExp;
+            include: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    lessOptions: {
+                        modifyVars: {
+                            "ant-prefix": string;
+                        };
+                        javascriptEnabled: boolean;
+                    };
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            loader?: undefined;
+            exclude?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    lessOptions: {
+                        javascriptEnabled: boolean;
+                    };
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    modules: boolean;
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp[];
+            use: string[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
         })[];
     };
     plugins: any[];
@@ -161,16 +200,16 @@ declare function _exports(_: any, { mode }: {
             };
             type?: undefined;
             include?: undefined;
-            exclude?: undefined;
             loader?: undefined;
+            exclude?: undefined;
         } | {
             test: RegExp;
             type: string;
             use?: undefined;
             issuer?: undefined;
             include?: undefined;
-            exclude?: undefined;
             loader?: undefined;
+            exclude?: undefined;
         } | {
             test: RegExp;
             use: (string | {
@@ -195,23 +234,8 @@ declare function _exports(_: any, { mode }: {
             include: RegExp;
             issuer?: undefined;
             type?: undefined;
+            loader?: undefined;
             exclude?: undefined;
-            loader?: undefined;
-        } | {
-            test: RegExp;
-            use: (string | {
-                loader: string;
-                options: {
-                    lessOptions: {
-                        javascriptEnabled: boolean;
-                    };
-                };
-            })[];
-            exclude: RegExp;
-            issuer?: undefined;
-            type?: undefined;
-            include?: undefined;
-            loader?: undefined;
         } | {
             test: RegExp;
             loader: string;
@@ -220,6 +244,60 @@ declare function _exports(_: any, { mode }: {
             issuer?: undefined;
             type?: undefined;
             include?: undefined;
+        } | {
+            test: RegExp;
+            include: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    lessOptions: {
+                        modifyVars: {
+                            "ant-prefix": string;
+                        };
+                        javascriptEnabled: boolean;
+                    };
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            loader?: undefined;
+            exclude?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    lessOptions: {
+                        javascriptEnabled: boolean;
+                    };
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp;
+            use: (string | {
+                loader: string;
+                options: {
+                    modules: boolean;
+                };
+            })[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
+        } | {
+            test: RegExp;
+            exclude: RegExp[];
+            use: string[];
+            issuer?: undefined;
+            type?: undefined;
+            include?: undefined;
+            loader?: undefined;
         })[];
     };
     plugins: any[];

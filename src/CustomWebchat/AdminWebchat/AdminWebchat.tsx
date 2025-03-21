@@ -3,6 +3,7 @@ import CompressOutlined from "@ant-design/icons/CompressOutlined";
 import ExpandOutlined from "@ant-design/icons/ExpandOutlined";
 import Button from "antd/es/button";
 
+import { KeycloakContext } from "@/index";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { Header } from "../components/Header/Header";
 import { Input as WebchatInput } from "../components/Input/Input";
@@ -13,7 +14,6 @@ import WebChatI18N from "../i18n";
 import { useWebchat } from "../useWebchat";
 import "./AdminWebchat.css";
 import { ToggleButton } from "./ToggleButton/ToggleButton";
-import { KeycloakContext } from "@/index";
 
 export const AdminWebchat = () => {
   const [open, setOpen] = useState(false);
@@ -86,7 +86,7 @@ export const AdminWebchat = () => {
   );
 
   return (
-    <div className={`${size === "min" ? "chat" : "chat-fullscreen"}`}>
+    <div className={`${size === "min" ? "chat erwc" : "chat-fullscreen erwc"}`}>
       <div
         className={`${
           size === "min" ? "chat-window" : "chat-window-fullscreen"

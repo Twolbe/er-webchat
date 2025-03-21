@@ -9,13 +9,13 @@ import "antd/es/modal/style";
 import "antd/es/spin/style";
 import "antd/es/tooltip/style";
 import { createContext, CSSProperties } from "react";
-// import { createRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
 import WebChatI18N from "./CustomWebchat/i18n";
 import NoAdminWebchat from "./CustomWebchat/NoAdminWebchat/NoAdminWebchat";
 import "./index.less";
 
-// const root = createRoot(document.getElementById("root")!);
+const root = createRoot(document.getElementById("root")!);
 
 export const KeycloakContext = createContext<{
   tennant: undefined | string;
@@ -75,7 +75,13 @@ const ERWebChat = ({
   background?: CSSProperties["background"];
 }) => {
   return (
-    <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
+    <ConfigProvider
+      locale={lang === "ru" ? ruRU : enUS}
+      prefixCls="erwc"
+      getPopupContainer={(triggerNode) =>
+        triggerNode?.closest(".erwc-wrapper") || document.body
+      }
+    >
       <KeycloakContext.Provider
         value={{
           getTokens,
@@ -90,7 +96,7 @@ const ERWebChat = ({
         }}
       >
         {embed ? (
-          <div style={{ height: "100%", display: "flex" }}>
+          <div style={{ height: "100%", display: "flex" }} className="erwc">
             <NoAdminWebchat extraAction={extraAction} />
           </div>
         ) : (
@@ -101,12 +107,12 @@ const ERWebChat = ({
   );
 };
 export default ERWebChat;
-// root.render(
-//   <ERWebChat
-//     tennant=""
-//     url=""
-//     getTokens={() => ({
-//       access: "",
-//     })}
-//   />
-// );
+root.render(
+  <ERWebChat
+    tennant=""
+    url=""
+    getTokens={() => ({
+      access: "",
+    })}
+  />
+);
