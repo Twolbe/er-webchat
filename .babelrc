@@ -8,6 +8,13 @@
         "libraryDirectory": "es",
         "style": "less"
       }
+    ],
+    [
+      "babel-plugin-import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
     ]
   ]
 }

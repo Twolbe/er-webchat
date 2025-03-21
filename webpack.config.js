@@ -2,7 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const { NormalModuleReplacementPlugin } = require("webpack");
+const {
+  LessPluginRemoveAntdGlobalStyles,
+} = require("less-plugin-remove-antd-global-styles");
 
 module.exports = (_, { mode }) => {
   const isProd = mode === "production";
@@ -85,6 +87,7 @@ module.exports = (_, { mode }) => {
               loader: "less-loader",
               options: {
                 lessOptions: {
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
                   javascriptEnabled: true,
                 },
               },
@@ -107,7 +110,8 @@ module.exports = (_, { mode }) => {
               loader: "less-loader",
               options: {
                 lessOptions: {
-                  modifyVars: { "ant-prefix": "erwc " },
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
+                  modifyVars: { "ant-prefix": "erwc" },
                   javascriptEnabled: true,
                 },
               },
@@ -125,6 +129,7 @@ module.exports = (_, { mode }) => {
               loader: "less-loader",
               options: {
                 lessOptions: {
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
                   javascriptEnabled: true, // Required if using JS in Less
                 },
               },
@@ -159,10 +164,6 @@ module.exports = (_, { mode }) => {
         filename: "index.html",
       }),
       new BundleAnalyzerPlugin(),
-      new NormalModuleReplacementPlugin(
-        /node_modules\/antd\/lib\/style\/index\.less/,
-        path.resolve(__dirname, "src/myStylesReplacement.less")
-      ),
     ],
   };
 };

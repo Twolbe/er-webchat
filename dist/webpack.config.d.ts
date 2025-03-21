@@ -65,6 +65,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         javascriptEnabled: boolean;
                     };
                     importLoaders?: undefined;
@@ -91,6 +92,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         modifyVars: {
                             "ant-prefix": string;
                         };
@@ -109,6 +111,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         javascriptEnabled: boolean;
                     };
                 };
@@ -225,6 +228,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         javascriptEnabled: boolean;
                     };
                     importLoaders?: undefined;
@@ -251,6 +255,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         modifyVars: {
                             "ant-prefix": string;
                         };
@@ -269,6 +274,7 @@ declare function _exports(_: any, { mode }: {
                 loader: string;
                 options: {
                     lessOptions: {
+                        plugins: LessPluginRemoveAntdGlobalStyles[];
                         javascriptEnabled: boolean;
                     };
                 };
@@ -319,4 +325,5 @@ declare function _exports(_: any, { mode }: {
     };
 };
 export = _exports;
+import { LessPluginRemoveAntdGlobalStyles } from "less-plugin-remove-antd-global-styles";
 //# sourceMappingURL=webpack.config.d.ts.map
