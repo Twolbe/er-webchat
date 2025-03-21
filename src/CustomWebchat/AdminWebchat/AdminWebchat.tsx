@@ -76,7 +76,11 @@ export const AdminWebchat = () => {
   );
 
   return (
-    <div className={`${size === "min" ? "chat erwc" : "chat-fullscreen erwc"}`}>
+    <div
+      className={`${
+        size === "min" ? "chat erwc-wrapper" : "chat-fullscreen erwc-wrapper"
+      }`}
+    >
       <div
         className={`${
           size === "min" ? "chat-window" : "chat-window-fullscreen"

@@ -95,7 +95,10 @@ const ERWebChat = ({
         }}
       >
         {embed ? (
-          <div style={{ height: "100%", display: "flex" }} className="erwc">
+          <div
+            style={{ height: "100%", display: "flex" }}
+            className="erwc-wrapper"
+          >
             <NoAdminWebchat extraAction={extraAction} />
           </div>
         ) : (

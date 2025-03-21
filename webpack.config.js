@@ -102,7 +102,7 @@ module.exports = (_, { mode }) => {
         },
         {
           test: /\.less$/,
-          include: /node_modules\/antd/, // Target AntD only
+          include: /node_modules\/antd/,
           use: [
             "style-loader",
             "css-loader",
@@ -118,10 +118,9 @@ module.exports = (_, { mode }) => {
             },
           ],
         },
-        // 2. Rule for YOUR project's LESS files
         {
           test: /\.less$/,
-          exclude: /node_modules\/antd/, // Exclude AntD
+          exclude: /node_modules\/antd/,
           use: [
             "style-loader",
             "css-loader",
@@ -130,13 +129,12 @@ module.exports = (_, { mode }) => {
               options: {
                 lessOptions: {
                   plugins: [new LessPluginRemoveAntdGlobalStyles()],
-                  javascriptEnabled: true, // Required if using JS in Less
+                  javascriptEnabled: true,
                 },
               },
             },
           ],
         },
-        // 2. Rule for your app's CSS Modules (e.g., *.module.css)
         {
           test: /\.module\.css$/,
           exclude: /node_modules\/antd/,
@@ -145,12 +143,11 @@ module.exports = (_, { mode }) => {
             {
               loader: "css-loader",
               options: {
-                modules: true, // Enable CSS Modules
+                modules: true,
               },
             },
           ],
         },
-        // 3. Rule for global CSS files (non-module)
         {
           test: /\.css$/,
           exclude: [/node_modules\/antd/, /\.module\.css$/],
