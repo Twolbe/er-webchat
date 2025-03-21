@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const { NormalModuleReplacementPlugin } = require("webpack");
 
 module.exports = (_, { mode }) => {
   const isProd = mode === "production";
@@ -158,6 +159,10 @@ module.exports = (_, { mode }) => {
         filename: "index.html",
       }),
       new BundleAnalyzerPlugin(),
+      new NormalModuleReplacementPlugin(
+        /node_modules\/antd\/lib\/style\/index\.less/,
+        path.resolve(__dirname, "src/myStylesReplacement.less")
+      ),
     ],
   };
 };
