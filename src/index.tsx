@@ -11,7 +11,6 @@ import "antd/es/tooltip/style/css";
 import { createContext, CSSProperties } from "react";
 // import { createRoot } from "react-dom/client";
 import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
-import WebChatI18N from "./CustomWebchat/i18n";
 import NoAdminWebchat from "./CustomWebchat/NoAdminWebchat/NoAdminWebchat";
 import "./index.less";
 
@@ -34,7 +33,7 @@ export const KeycloakContext = createContext<{
   url: undefined,
   path: "/webhooks/portal/webhook",
   lang: "ru",
-  title: WebChatI18N.ru["webChat/title"],
+  title: "Easy Report Веб-чат",
   extraAction: undefined,
   background: "#d9d9d9",
 });
@@ -59,7 +58,7 @@ const ERWebChat = ({
   path = "/webhooks/portal/webhook",
   lang = "ru",
   embed = true,
-  title = WebChatI18N[lang]["webChat/title"],
+  title = "Easy Report Веб-чат",
   extraAction,
   background = "#d9d9d9",
 }: {
