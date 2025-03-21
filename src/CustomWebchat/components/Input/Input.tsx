@@ -1,9 +1,8 @@
-import WebChatI18N from "@/CustomWebchat/i18n";
-import { KeycloakContext } from "@/index";
+import { useI18N } from "@/CustomWebchat/i18n";
 import SendOutlined from "@ant-design/icons/SendOutlined";
 import Button from "antd/es/button";
 import TextArea from "antd/es/input/TextArea";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import { I_UserMessage, I_WebChatMessage } from "../../interface";
 
 export const Input = ({
@@ -50,7 +49,7 @@ const useWebchatInput = (
   setResponseStack: any,
   textAreaRef: any
 ) => {
-  const { lang } = useContext(KeycloakContext);
+  const i18n = useI18N();
   const [value, setValue] = useState<string | undefined>();
 
   const sendMyMessage = useCallback(() => {
@@ -96,7 +95,7 @@ const useWebchatInput = (
       key="webchat-textarea"
       ref={textAreaRef}
       autoSize
-      placeholder={WebChatI18N[lang]["webChat/inputPlaceholder"]}
+      placeholder={i18n.inputPlaceholder}
       style={{
         border: "none",
         boxShadow: "none",

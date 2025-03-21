@@ -3,14 +3,13 @@ import CompressOutlined from "@ant-design/icons/CompressOutlined";
 import ExpandOutlined from "@ant-design/icons/ExpandOutlined";
 import Button from "antd/es/button";
 
-import { KeycloakContext } from "@/index";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "../components/Header/Header";
 import { Input as WebchatInput } from "../components/Input/Input";
 import { WorkArea } from "../components/WorkArea/WorkArea";
 import { ButtonTooltip } from "../helpers";
 import { useContainer } from "../hooks/useContainer";
-import WebChatI18N from "../i18n";
+import { useI18N } from "../i18n";
 import { useWebchat } from "../useWebchat";
 import "./AdminWebchat.css";
 import { ToggleButton } from "./ToggleButton/ToggleButton";
@@ -19,7 +18,7 @@ export const AdminWebchat = () => {
   const [open, setOpen] = useState(false);
   const [size, setSize] = useState<"min" | "full">("min");
   const { sock, ms } = useWebchat();
-  const { lang } = useContext(KeycloakContext);
+  const i18n = useI18N();
 
   useEffect(() => {
     const handleKeyDown = (event: any) =>
@@ -43,10 +42,7 @@ export const AdminWebchat = () => {
   const extraAction = useMemo(
     () => [
       size === "min" ? (
-        <ButtonTooltip
-          title={WebChatI18N[lang]["expandChat"]}
-          key="min-button-tooltip"
-        >
+        <ButtonTooltip title={i18n.expandChat} key="min-button-tooltip">
           <Button
             className="webchat-button__header"
             type={"text"}
@@ -56,10 +52,7 @@ export const AdminWebchat = () => {
           />
         </ButtonTooltip>
       ) : (
-        <ButtonTooltip
-          title={WebChatI18N[lang]["compressChat"]}
-          key="full-button-tooltip"
-        >
+        <ButtonTooltip title={i18n.compressChat} key="full-button-tooltip">
           <Button
             className="webchat-button__header"
             type={"text"}
@@ -69,10 +62,7 @@ export const AdminWebchat = () => {
           />
         </ButtonTooltip>
       ),
-      <ButtonTooltip
-        title={WebChatI18N[lang]["closeChat"]}
-        key="close-button-tooltip"
-      >
+      <ButtonTooltip title={i18n.closeChat} key="close-button-tooltip">
         <Button
           className="webchat-button__header"
           type={"text"}
