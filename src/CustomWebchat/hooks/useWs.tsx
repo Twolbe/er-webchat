@@ -3,18 +3,21 @@ import { io } from "socket.io-client";
 import { handleBotResponse, makeid } from "../helpers";
 import { I_WebChatMessage } from "../interface";
 
-export const useWs = (url: string | undefined, path: string) => {
+export const useWs = (url: string | undefined, path: string, senderId: string| undefined) => {
   const [isReady, setIsReady] = useState(false);
-  const [sessionId, setSessionId] = useState<string | undefined>();
+  const [sessionId, setSessionId] = useState<string | undefined>(senderId);
   const socketRef = useRef<any>(null);
   const [responses, setResponses] = useState<I_WebChatMessage[]>([]);
 
   useEffect(() => {
     if (url) {
-      let session_id = sessionStorage.getItem("web_chat_session_id");
-      if (!session_id) {
-        session_id = makeid(10);
-        sessionStorage.setItem("web_chat_session_id", session_id);
+      let session_id = sessionId
+      if (!sessionId) {
+        session_id = sessionStorage.getItem("web_chat_session_id") || undefined;
+        if (!session_id) {
+          session_id = makeid(10);
+          sessionStorage.setItem("web_chat_session_id", session_id);
+        }
       }
       setSessionId(session_id);
 

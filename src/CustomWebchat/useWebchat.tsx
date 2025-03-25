@@ -5,10 +5,14 @@ import { useWs } from "./hooks/useWs";
 import { I_WebChatMessage } from "./interface";
 
 export const useWebchat = (open?: boolean) => {
-  const { tennant, legacyTennant, getTokens, lang, url, path } =
+  const { tennant, legacyTennant, getTokens, lang, url, path, senderId } =
     useContext(KeycloakContext);
 
-  const [ready, session_id, responses, setResponses, emit] = useWs(url, path);
+  const [ready, session_id, responses, setResponses, emit] = useWs(
+    url,
+    path,
+    senderId
+  );
   const [messages, setMessages] = useState<
     (I_WebChatMessage & { id?: number })[]
   >([]);

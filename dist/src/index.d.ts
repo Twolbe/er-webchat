@@ -20,6 +20,7 @@ export declare const KeycloakContext: import("react").Context<{
     title: string;
     extraAction: undefined | any;
     background: CSSProperties["background"];
+    senderId: string | undefined;
 }>;
 /**
  * @param {*} getTokens - function; returns current access and refresh tokens. refresh token is optional
@@ -32,8 +33,9 @@ export declare const KeycloakContext: import("react").Context<{
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
+ * @param {*} [senderId=undefined] - external value for senderId
  */
-declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, }: {
+declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, senderId }: {
     getTokens: () => {
         access: string;
         refresh?: string;
@@ -47,6 +49,7 @@ declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, 
     title?: string;
     extraAction?: any;
     background?: CSSProperties["background"];
+    senderId?: string;
 }) => import("react/jsx-runtime").JSX.Element;
 export default ERWebChat;
 //# sourceMappingURL=index.d.ts.map

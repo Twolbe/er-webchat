@@ -26,6 +26,7 @@ export const KeycloakContext = createContext<{
   title: string;
   extraAction: undefined | any;
   background: CSSProperties["background"];
+  senderId: string | undefined
 }>({
   tennant: undefined,
   legacyTennant: false,
@@ -36,6 +37,7 @@ export const KeycloakContext = createContext<{
   title: "Easy Report Веб-чат",
   extraAction: undefined,
   background: "#d9d9d9",
+  senderId: undefined
 });
 
 /**
@@ -49,6 +51,7 @@ export const KeycloakContext = createContext<{
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
+ * @param {*} [senderId=undefined] - external value for senderId
  */
 const ERWebChat = ({
   getTokens,
@@ -61,6 +64,7 @@ const ERWebChat = ({
   title = "Easy Report Веб-чат",
   extraAction,
   background = "#d9d9d9",
+  senderId
 }: {
   getTokens: () => { access: string; refresh?: string };
   tennant: string;
@@ -72,6 +76,7 @@ const ERWebChat = ({
   title?: string;
   extraAction?: any;
   background?: CSSProperties["background"];
+  senderId?: string
 }) => {
   return (
     <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
@@ -86,6 +91,7 @@ const ERWebChat = ({
           title,
           extraAction,
           background,
+          senderId
         }}
       >
         {embed ? (
@@ -107,5 +113,6 @@ export default ERWebChat;
 //     getTokens={() => ({
 //       access: "",
 //     })}
+//     senderId=""
 //   />
 // );
