@@ -26,7 +26,8 @@ export const KeycloakContext = createContext<{
   title: string;
   extraAction: undefined | any;
   background: CSSProperties["background"];
-  senderId: string | undefined
+  senderId: string | undefined;
+  embed: boolean | undefined;
 }>({
   tennant: undefined,
   legacyTennant: false,
@@ -37,7 +38,8 @@ export const KeycloakContext = createContext<{
   title: "Easy Report Веб-чат",
   extraAction: undefined,
   background: "#d9d9d9",
-  senderId: undefined
+  senderId: undefined,
+  embed: false,
 });
 
 /**
@@ -64,7 +66,7 @@ const ERWebChat = ({
   title = "Easy Report Веб-чат",
   extraAction,
   background = "#d9d9d9",
-  senderId
+  senderId,
 }: {
   getTokens: () => { access: string; refresh?: string };
   tennant: string;
@@ -76,7 +78,7 @@ const ERWebChat = ({
   title?: string;
   extraAction?: any;
   background?: CSSProperties["background"];
-  senderId?: string
+  senderId?: string;
 }) => {
   return (
     <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
@@ -91,7 +93,8 @@ const ERWebChat = ({
           title,
           extraAction,
           background,
-          senderId
+          senderId,
+          embed,
         }}
       >
         {embed ? (
@@ -107,12 +110,16 @@ const ERWebChat = ({
 };
 export default ERWebChat;
 // root.render(
-//   <ERWebChat
-//     tennant=""
-//     url=""
-//     getTokens={() => ({
-//       access: "",
-//     })}
-//     senderId=""
-//   />
+//   <div style={{ width: "400px", height: "600px" }}>
+//     <ERWebChat
+//       tennant=""
+//       url=""
+//       getTokens={() => ({
+//         access:
+//           "",
+//       })}
+//       senderId=""
+//       embed={true}
+//     />
+//   </div>
 // );

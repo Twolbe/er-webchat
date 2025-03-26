@@ -21,6 +21,7 @@ export declare const KeycloakContext: import("react").Context<{
     extraAction: undefined | any;
     background: CSSProperties["background"];
     senderId: string | undefined;
+    embed: boolean | undefined;
 }>;
 /**
  * @param {*} getTokens - function; returns current access and refresh tokens. refresh token is optional
@@ -35,7 +36,7 @@ export declare const KeycloakContext: import("react").Context<{
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
  * @param {*} [senderId=undefined] - external value for senderId
  */
-declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, senderId }: {
+declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, senderId, }: {
     getTokens: () => {
         access: string;
         refresh?: string;

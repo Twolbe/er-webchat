@@ -14,5 +14,9 @@ export declare const useWebchat: (open?: boolean) => {
         setResponses: import("react").Dispatch<import("react").SetStateAction<I_WebChatMessage[]>>;
         textAreaRef: import("react").MutableRefObject<any>;
     };
+    chat: {
+        open: boolean;
+        setOpen: import("react").Dispatch<import("react").SetStateAction<boolean>>;
+    };
 };
 //# sourceMappingURL=useWebchat.d.ts.map

@@ -15,9 +15,13 @@ import "./AdminWebchat.css";
 import { ToggleButton } from "./ToggleButton/ToggleButton";
 
 export const AdminWebchat = () => {
-  const [open, setOpen] = useState(false);
   const [size, setSize] = useState<"min" | "full">("min");
-  const { sock, ms } = useWebchat();
+  const {
+    sock,
+    ms,
+    chat: { open, setOpen },
+  } = useWebchat();
+
   const i18n = useI18N();
 
   useEffect(() => {
