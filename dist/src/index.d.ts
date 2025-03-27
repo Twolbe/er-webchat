@@ -34,7 +34,7 @@ export declare const KeycloakContext: import("react").Context<{
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
- * @param {*} [senderId=undefined] - external value for senderId
+ * @param {*} senderId - external value for senderId
  */
 declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, senderId, }: {
     getTokens: () => {
