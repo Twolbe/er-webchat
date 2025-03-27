@@ -1,10 +1,10 @@
-import "antd/es/button/style/css";
-import "antd/es/drawer/style/css";
-import "antd/es/image/style/css";
-import "antd/es/input/style/css";
-import "antd/es/modal/style/css";
-import "antd/es/spin/style/css";
-import "antd/es/tooltip/style/css";
+import "antd/es/button/style";
+import "antd/es/drawer/style";
+import "antd/es/image/style";
+import "antd/es/input/style";
+import "antd/es/modal/style";
+import "antd/es/spin/style";
+import "antd/es/tooltip/style";
 import { CSSProperties } from "react";
 import "./index.less";
 export declare const KeycloakContext: import("react").Context<{
@@ -34,7 +34,7 @@ export declare const KeycloakContext: import("react").Context<{
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
- * @param {*} [senderId=undefined] - external value for senderId
+ * @param {*} senderId - external value for senderId
  */
 declare const ERWebChat: ({ getTokens, tennant, legacyTennant, url, path, lang, embed, title, extraAction, background, senderId, }: {
     getTokens: () => {

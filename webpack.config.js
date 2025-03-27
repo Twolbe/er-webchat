@@ -1,11 +1,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const {
+  LessPluginRemoveAntdGlobalStyles,
+} = require("less-plugin-remove-antd-global-styles");
 
 module.exports = (_, { mode }) => {
   const isProd = mode === "production";
   return {
-    mode: mode || 'development',
+    mode: mode || "development",
     entry: "./src/index.tsx",
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -67,27 +71,6 @@ module.exports = (_, { mode }) => {
           type: "asset/resource",
         },
         {
-          test: /\.css$/i,
-          use: [
-            "style-loader",
-            {
-              loader: "css-loader",
-              options: {
-                importLoaders: 1,
-                modules: {
-                  localIdentName: "[path][name][ext]_[local]",
-                },
-              },
-            },
-          ],
-          include: /\.module\.css$/,
-        },
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
-          exclude: /\.module\.css$/,
-        },
-        {
           test: /\.less$/i,
           use: [
             "style-loader",
@@ -104,6 +87,7 @@ module.exports = (_, { mode }) => {
               loader: "less-loader",
               options: {
                 lessOptions: {
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
                   javascriptEnabled: true,
                 },
               },
@@ -112,7 +96,13 @@ module.exports = (_, { mode }) => {
           include: /\.module\.less$/,
         },
         {
-          test: /\.less$/i,
+          test: /\.(jsx|tsx|js|ts)$/,
+          loader: "ts-loader",
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.less$/,
+          include: /node_modules\/antd/,
           use: [
             "style-loader",
             "css-loader",
@@ -120,17 +110,48 @@ module.exports = (_, { mode }) => {
               loader: "less-loader",
               options: {
                 lessOptions: {
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
+                  modifyVars: { "ant-prefix": "erwc" },
                   javascriptEnabled: true,
                 },
               },
             },
           ],
-          exclude: /\.module\.less$/,
         },
         {
-          test: /\.(jsx|tsx|js|ts)$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/,
+          test: /\.less$/,
+          exclude: /node_modules\/antd/,
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "less-loader",
+              options: {
+                lessOptions: {
+                  plugins: [new LessPluginRemoveAntdGlobalStyles()],
+                  javascriptEnabled: true,
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.module\.css$/,
+          exclude: /node_modules\/antd/,
+          use: [
+            "style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          exclude: [/node_modules\/antd/, /\.module\.css$/],
+          use: ["style-loader", "css-loader"],
         },
       ],
     },
@@ -139,7 +160,7 @@ module.exports = (_, { mode }) => {
         template: path.join(__dirname, "public", "index.html"),
         filename: "index.html",
       }),
-      new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin(),
     ],
   };
 };

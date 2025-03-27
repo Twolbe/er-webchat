@@ -1,13 +1,13 @@
-import "antd/es/button/style/css";
+import "antd/es/button/style";
 import ConfigProvider from "antd/es/config-provider";
-import "antd/es/drawer/style/css";
-import "antd/es/image/style/css";
-import "antd/es/input/style/css";
+import "antd/es/drawer/style";
+import "antd/es/image/style";
+import "antd/es/input/style";
 import enUS from "antd/es/locale/en_US";
 import ruRU from "antd/es/locale/ru_RU";
-import "antd/es/modal/style/css";
-import "antd/es/spin/style/css";
-import "antd/es/tooltip/style/css";
+import "antd/es/modal/style";
+import "antd/es/spin/style";
+import "antd/es/tooltip/style";
 import { createContext, CSSProperties } from "react";
 // import { createRoot } from "react-dom/client";
 import { AdminWebchat } from "./CustomWebchat/AdminWebchat/AdminWebchat";
@@ -53,7 +53,7 @@ export const KeycloakContext = createContext<{
  * @param {*} [title='Easy Report Веб-чат'] - webchat title. Default 'Easy Report Веб-чат'
  * @param {*} extraAction - extra action for header
  * @param {*} [background='#d9d9d9'] - background CSS property. Default '#d9d9d9'
- * @param {*} [senderId=undefined] - external value for senderId
+ * @param {*} senderId - external value for senderId
  */
 const ERWebChat = ({
   getTokens,
@@ -81,7 +81,13 @@ const ERWebChat = ({
   senderId?: string;
 }) => {
   return (
-    <ConfigProvider locale={lang === "ru" ? ruRU : enUS}>
+    <ConfigProvider
+      locale={lang === "ru" ? ruRU : enUS}
+      prefixCls="erwc"
+      getPopupContainer={(triggerNode) =>
+        triggerNode?.closest(".erwc-wrapper") || document.body
+      }
+    >
       <KeycloakContext.Provider
         value={{
           getTokens,
@@ -98,7 +104,10 @@ const ERWebChat = ({
         }}
       >
         {embed ? (
-          <div style={{ height: "100%", display: "flex" }}>
+          <div
+            style={{ height: "100%", display: "flex" }}
+            className="erwc-wrapper"
+          >
             <NoAdminWebchat extraAction={extraAction} />
           </div>
         ) : (
