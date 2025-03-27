@@ -31,6 +31,7 @@ If you set the **embed** property to _false_, the web chat will be invoked by a 
 | **title**         | `string`                                     | `Easy Report Веб-чат`      | ❌       | webchat title                                                                                              |
 | **extraAction**   | `ReactNode`, `ReactNode[]`                   | -                          | ❌       | extra action for header                                                                                    |
 | **background**    | `CSSProperties["background"]`                | `#d9d9d9`                  | ❌       | background CSS property                                                                                    |
+| **senderId**      | `string`                                     | -                          | ❌       | external value for senderId                                                                                |
 
 # Usage examples
 
